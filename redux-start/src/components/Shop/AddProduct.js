@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { useGlobalContext } from '../../context/globContext'
 import { useDispatch } from 'react-redux'
+import { addAsyncAction } from '../../redux/actions/productActions'
 
 export const AddProduct = () => {
     // const { dispatch } = useGlobalContext();
@@ -10,10 +10,7 @@ export const AddProduct = () => {
     const handleProductCreate = evt => {
         evt.preventDefault();
         if (productTitle != " ") {
-            dispatch({
-                type: "PRODUCTS/ADD_PRODUCTS",
-                payload: productTitle
-            })
+            dispatch(addAsyncAction(productTitle))
             setProductTitle(" ")
         }
     }

@@ -1,9 +1,9 @@
-// export function loadActions(products) {
-//     return {
-//         type: "PRODUCTS/LOAD_PRODUCTS",
-//         payload: products
-//     }
-// }
+export function addAction(productTitle) {
+    return {
+        type: "PRODUCTS/ADD_PRODUCTS",
+        payload: productTitle
+    }
+}
 
 export function loadAsyncAction() {
     return function (dispatch, getState) {
@@ -14,6 +14,22 @@ export function loadAsyncAction() {
                     type: "PRODUCTS/LOAD_PRODUCTS",
                     payload: products
                 })
+            })
+    }
+}
+
+export function addAsyncAction(productTitle) {
+    return function (dispatch) {
+        fetch("https://httpbin.org/post/", {
+            method: "POST",
+            body: JSON.stringify({
+                title: productTitle
+            })
+        })
+            .then(resp => resp.json())
+            .then(({ json: { title } }) => {
+                console.log(title)
+                dispatch(addAction(title))
             })
     }
 }

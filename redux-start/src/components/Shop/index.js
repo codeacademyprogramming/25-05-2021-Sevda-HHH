@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { Products } from './Products'
 import { loadAsyncAction } from '../../redux/actions/productActions'
-import { useSelector, useDispatch } from 'react-redux'
 
 const productSelector = state => {
     return state.products

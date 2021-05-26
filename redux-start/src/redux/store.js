@@ -1,6 +1,5 @@
 import { createStore, applyMiddleware } from 'redux'
 import reduxThunkMiddleware from 'redux-thunk'
-// import logger from 'redux-logger'
 import { reducer } from './reducer'
 
 const logger = storeAPI => next => action => {
